@@ -18,20 +18,20 @@ let device2: CookingDevice<'oven'>;
 
 // ---------------- Example 2: Epic Week and Epic Day ----------------
 
-type EpicWeek = {
+type BeerCityCode = {
   startDate: string;
   endDate: string;
 };
 
-type EpicDay = {
+type BeerCityCodeDay2 = {
   startTime: string;
   endTime: string;
 };
 
 // without conditional types, we would have to do something like this
-function getDuration(epic: EpicWeek): string;
-function getDuration(epic: EpicDay): number;
-function getDuration(epic: EpicWeek | EpicDay): string | number {
+function getDuration(epic: BeerCityCode): string;
+function getDuration(epic: BeerCityCodeDay2): number;
+function getDuration(epic: BeerCityCode | BeerCityCodeDay2): string | number {
   throw new Error('Not implemented');
 
   // Downsides:
@@ -51,18 +51,18 @@ function getDuration(epic: EpicWeek | EpicDay): string | number {
 /**
  * The getDuration function returns the duration in a human-readable string for the epic week and as a number of hours for the epic day
  */
-function getDuration2<T extends EpicWeek | EpicDay>(
+function getDuration2<T extends BeerCityCode | BeerCityCodeDay2>(
   epic: T
-): T extends EpicWeek ? string : number {
+): T extends BeerCityCode ? string : number {
   throw new Error('Not implemented');
 }
 
-const epicWeek: EpicWeek = {
+const epicWeek: BeerCityCode = {
   startDate: '2021-01-01',
   endDate: '2021-01-07',
 };
 
-const epicDay: EpicDay = {
+const epicDay: BeerCityCodeDay2 = {
   startTime: '09:00',
   endTime: '17:00',
 };
@@ -76,7 +76,8 @@ type ToArray<Type> = Type extends any ? Type[] : never;
 
 type NumberArray = ToArray<number>;
 
-type NumberOrStringArray = ToArray<number | string>;
+
+type NumberOrStringArray = ToArray<number | string |>;
 
 // ---------------- Example 4: Flatten  ----------------
 

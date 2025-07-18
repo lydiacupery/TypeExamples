@@ -18,7 +18,7 @@ export type LabelKey = keyof typeof labels;
 //   ? `${BreadcrumbWithSlash<A>}/${BreadcrumbWithSlash<B>}`
 //   : never;
 
-// const test1: BreadcrumbWithSlash<'breadcrumb1/breadcrumb2/label1'> =
+// const test1: BreadcrumbWithSlash<'breadcrumb1/breadcrumb2/label'> =
 //   'breadcrumb1/breadcrumb2/label1';
 
 /**
