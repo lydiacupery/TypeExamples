@@ -36,7 +36,7 @@ function getDuration(epic: BeerCityCode | BeerCityCodeDay2): string | number {
 
   // Downsides:
   // 1 - this can be cumbersome to do over and over again
-  // 2 - if we add a type to epic, the number of overloads we need to add to the function will grow
+  // 2 - if we add a type to beer city code, the number of overloads we need to add to the function will grow
 }
 
 // ✨ Challenge - how would you implement the return type of getDuration using conditional types?
@@ -74,10 +74,19 @@ const durationDay = getDuration2(epicDay);
 
 type ToArray<Type> = Type extends any ? Type[] : never;
 
+type ToArray2<Type> = Type[]
+
+
 type NumberArray = ToArray<number>;
 
+type Thing = ToArray2<number | string>;
+//conditional types are distributive when the type is a union
+type Thing2 = ToArray<number | string>;
 
-type NumberOrStringArray = ToArray<number | string |>;
+
+
+
+type NumberOrStringArray = ToArray<number | string >;
 
 // ---------------- Example 4: Flatten  ----------------
 
