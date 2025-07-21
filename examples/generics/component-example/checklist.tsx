@@ -24,9 +24,10 @@ export const Checklist = <T extends string>({
   isTaskComplete,
   taskUI: UI,
 }: {
-  tasks: Array<Task<T>>;
-  isTaskComplete: (t: T) => boolean;
-  taskUI: React.FunctionComponent<TaskProps<T>>;
+  // all of the props are generic based on the type T
+  tasks: Array<Task<T>>; // Array of tasks of type T
+  isTaskComplete: (t: T) => boolean; // Function that takes a task of type T and returns a boolean
+  taskUI: React.FunctionComponent<TaskProps<T>>; // Function that takes a task of type T and returns a React component
 }) => {
   const completionPercentage = useMemo(() => {
     return (

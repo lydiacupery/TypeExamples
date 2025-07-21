@@ -18,20 +18,21 @@ let device2: CookingDevice<'oven'>;
 
 // ---------------- Example 2: Epic Week and Epic Day ----------------
 
-type BeerCityCode = {
+type Event = {
   startDate: string;
   endDate: string;
 };
 
-type BeerCityCodeDay2 = {
+type Session = {
   startTime: string;
   endTime: string;
 };
 
+
 // without conditional types, we would have to do something like this
-function getDuration(epic: BeerCityCode): string;
-function getDuration(epic: BeerCityCodeDay2): number;
-function getDuration(epic: BeerCityCode | BeerCityCodeDay2): string | number {
+function getDuration(epic: Event): string;
+function getDuration(epic: Session): number;
+function getDuration(epic: Event | Session): string | number {
   throw new Error('Not implemented');
 
   // Downsides:
@@ -51,37 +52,37 @@ function getDuration(epic: BeerCityCode | BeerCityCodeDay2): string | number {
 /**
  * The getDuration function returns the duration in a human-readable string for the epic week and as a number of hours for the epic day
  */
-function getDuration2<T extends BeerCityCode | BeerCityCodeDay2>(
+function getDuration2<T extends Event | Session>(
   epic: T
-): T extends BeerCityCode ? string : number {
+): T extends Event ? string : number {
   throw new Error('Not implemented');
 }
 
-const epicWeek: BeerCityCode = {
+const epicWeek: Event = {
   startDate: '2021-01-01',
   endDate: '2021-01-07',
 };
 
-const epicDay: BeerCityCodeDay2 = {
+const session: Session = {
   startTime: '09:00',
   endTime: '17:00',
 };
 
 const durationWeek = getDuration2(epicWeek);
-const durationDay = getDuration2(epicDay);
+const sessionDuration = getDuration2(session);
 
 // ---------------- Example 3: To Array (on slides) ----------------
 
 type ToArray<Type> = Type extends any ? Type[] : never;
 
-type ToArray2<Type> = Type[]
+//conditional types are distributive when the type is a union
+type Thing2 = ToArray<number | string>;
 
+type ToArray2<Type> = Type[]
 
 type NumberArray = ToArray<number>;
 
 type Thing = ToArray2<number | string>;
-//conditional types are distributive when the type is a union
-type Thing2 = ToArray<number | string>;
 
 
 

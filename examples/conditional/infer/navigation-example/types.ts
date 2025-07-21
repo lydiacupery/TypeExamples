@@ -18,8 +18,8 @@ export type LabelKey = keyof typeof labels;
 //   ? `${BreadcrumbWithSlash<A>}/${BreadcrumbWithSlash<B>}`
 //   : never;
 
-// const test1: BreadcrumbWithSlash<'breadcrumb1/breadcrumb2/label'> =
-//   'breadcrumb1/breadcrumb2/label1';
+// const test1: BreadcrumbWithSlash<'label1/label1'> =
+//   'label1/label1';
 
 /**
  * 2nd iteration - what's wrong?
@@ -34,6 +34,8 @@ export type LabelKey = keyof typeof labels;
 //     ? `${BreadcrumbWithSlash<A>}/${B}`
 //     : never
 //   : never;
+
+// const test2: BreadcrumbWithSlash<'label1'> = 'label1';
 
 /**
  * Final iteration of the breadcrumb key
